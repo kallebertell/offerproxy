@@ -4,16 +4,49 @@
    Author's custom styles
    ========================================================================== */
 
+.offer-view {
+  margin-top: 20px;
+}
 
+.offer-form {
+  margin-bottom: 50px;
+}
 
+.offer-form__page {
+  width: 60px;
+}
 
+.offer {
+  display: -webkit-flex;
+  display: flex;
+  margin-bottom: 10px;
+}
 
+.offer__image {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  background-position: cover;
+}
 
+.offer__title, .offer__payout {
+  margin-left: 10px;
+}
 
+.deemphasize {
+  color: #ccc;
+  font-weight: 400;
+}
 
+.results {
+}
 
-
-
+.results__help {
+  text-align: center;
+  font-size: 18px;
+  color: #999;
+  margin-top: 100px;
+}
 
 
 

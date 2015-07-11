@@ -30,67 +30,59 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Offer Viewer</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div><!--/.navbar-collapse -->
+        
       </div>
     </nav>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-      </div>
-    </div>
-
-    <div class="container">
-      <!-- Example row of columns -->
+    <div class="container offer-view">
       <div class="row">
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <form class="offer-form">
+            <div class="form-group">
+              <label for="uid">Player id <span class="deemphasize">(uid)</span></label>
+              <input type="text" class="form-control" id="uid" placeholder="e.g. player1">
+            </div>
+            <div class="form-group">
+              <label for="pub0">Custom parameter <span class="deemphasize">(pub0)</span></label>
+              <input type="text" class="form-control" id="pub0" placeholder="e.g. campaign2">
+            </div>
+            <div class="form-group">
+              <label for="page">Page <span class="deemphasize">(page)</span></label>
+              <input type="number" class="form-control offer-form__page" id="page" value="1" placeholder "e.g. 1">
+            </div>
+
+            <button type="submit" class="btn btn-default">Get offers</button>
+          </form>        
         </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+
+        <div class="col-md-8 results">
+          <p class="results__help">
+            Fill in the parameters and press Get Offers!
+          </p>
         </div>
       </div>
 
-      <hr>
+    </div> <!-- /container -->        
 
-      <footer>
-        <p>&copy; Company 2015</p>
-      </footer>
-    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script id="offerTemplate" type="text/template">
+      <div class="offer">
+        <div class="offer__image" style="background-image: url({{thumbnail}})"></div>
+        <div>
+          <h4 class="offer__title">{{title}}</h4>
+          <p class="offer__payout">Payout: <strong>{{payout}}</strong></p>
+        </div>
+      </div>
+    </script>
 
-        <script src="js/vendor/bootstrap.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
-        <script src="js/main.js"></script>
+      <script src="js/vendor/bootstrap.min.js"></script>
+
+      <script src="js/main.js"></script>
     </body>
+
+
 </html>
