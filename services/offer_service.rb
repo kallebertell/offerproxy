@@ -2,6 +2,7 @@
 module Services 
   require 'rest-client'
   require 'json'
+  require_relative 'hashkey_calculator'
 
   # Knows how to call Fyber's offer service and return offers based on a set of params
   class OfferService
@@ -51,13 +52,14 @@ module Services
       begin
         response = RestClient.get "http://api.sponsorpay.com/feed/v1/offers.json", { params: params }
       rescue => e
+
         if (e.response)
           # Pass along useful information
-          error_info = parse_error_body(e.response)
-          raise OfferServiceError.new("Fyber returned error", error_info)
+          error_info = { "status_code" => e.response.code }
+          raise OfferServiceError.new("Fyber returned error", error_info.merge(parse_error_body(e.response)))
         else
           # Assume a network communication error
-          raise OfferServiceError.new(e.message, {"code" => "NETWORK_ERROR", "message" => "Service currently unavailable. Try again later"})
+          raise OfferServiceError.new(e.message, {"status_code" => 500, "code" => "NETWORK_ERROR", "message" => "Service currently unavailable. Try again later"})
         end
       end
 

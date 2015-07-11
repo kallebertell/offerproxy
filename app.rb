@@ -9,6 +9,7 @@ require_relative 'fyber_credentials' if File.exists?('fyber_credentials.rb')
 require_relative 'services/offer_service'
 
 class App < Sinatra::Base
+  helpers Sinatra::Param
 
   set :root, File.dirname(__FILE__)
  
@@ -29,5 +30,31 @@ class App < Sinatra::Base
     send_file File.expand_path('index.html', settings.public_folder)
   end
  
+  # Our Api
+  get '/api/v1/offers' do
+    content_type :json
+
+    param :device_id, String, required: true
+    param :locale, String, required: true
+    param :uid, String, required: true
+    param :ip, String, required: true
+
+    begin
+      offers = @offer_service.get_offers(
+        device_id: params['device_id'], 
+        locale: params['locale'], 
+        uid: params['uid'],
+        ip: params['ip'], 
+        offer_types: params['offer_types'],
+        pub0: params['pub0'],
+        page: params['page']
+      )
+    rescue Services::OfferService::OfferServiceError => e
+      halt e.info["status_code"], e.info.to_json
+    end
+
+    offers.to_json
+  end
+
 end
 
