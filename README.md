@@ -7,6 +7,9 @@ The proxy is dedicated to a single app (app id & api key).
 The app id & api key is externalized  
 It includes a basic frontend client where you may try out the api with different parameters and the available offers (if any).
 
+See the app live at:
+[https://secure-mountain-9454.herokuapp.com/]
+
 
 ## Development
 
